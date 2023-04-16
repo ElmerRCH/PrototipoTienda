@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/carrito.css')}}">
+    
+
+    <title>Document</title>
+</head>
+<body>
+        <header>
+            <div class="logo">
+                <a href="https://uadeo.mx/"><img src="{{url_for('static', filename='img/uadeo.png')}}"></a>
+                <h1>Administradores</h1>
+                
+            </div>
+            <nav>
+                <a class="logout" href="{{ url_for('logout') }}">Cerrar sesion</a>
+            </nav>
+        </header>   
+        </div> 
+        <main class="container-responsive">
+            <div class = "table-container">
+                <table class="table-fill">
+                    <thead>
+                    <tr>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-left">Pedido</th>
+                    <th class="text-left">Total</th>
+                    <th class="text-left">Operaciones</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    <tr>
+                    <td class="text-left">san</td>
+                    <td class="text-left"> 10</td>
+                    <td class="text-left">$ 10</td>
+                    <td>
+                        <input type="number">
+                        <button class="operaciones">Aceptar</button>
+                        <button class="operaciones">Rechazar</button>
+                    </td>
+                    </tr>
+                        <tr>
+                            <td class="text-left">a</td>
+                        
+                     
+                            <td class="text-left">b</td>
+                        
+                 
+                        
+                            <td class="text-left">c</td>
+                        </tr> 
+                    </tbody>
+                </table>
+        </main>
+</body>
+</html>

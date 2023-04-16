@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login2.css')}}">
+   
+</head>
+<body>
+    <div class="area" >
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+            <div class="contenedor__todo">
+                <div class="caja__trasera">
+                    <div class="caja__trasera-login">
+                        <h3>WebCoop</h3>
+                        <h3>¿Ya tienes una cuenta?</h3>
+                        <p>Inicia sesión para entrar en la página</p>
+                        <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                        
+                    </div>
+                    <div class="caja__trasera-register">
+                        <h3>¿Aún no tienes una cuenta?</h3>
+                        <p>Regístrate para que puedas iniciar sesión</p>
+                        <button id="btn__registrarse">Regístrarse</button>
+                        <form action="/guia2" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button>Restablecer contraseña</button>
+                        </form>
+                        
+                    </div>
+                </div>
+
+                <!--Formulario de Login y registro-->
+                <div class="contenedor__login-register">
+                    <!--Login-->
+                    <form class="formulario__login" action="/login" method="POST">
+                        <h2>WebCoop</h2>
+                        <h2>Iniciar Sesión</h2>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <br/>
+                        {% for mesagge in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong>{{ messages}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                        </div>
+                        {% endfor%}
+                        {%endif%}
+                        {% endwith %}
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="text" placeholder="Matricula" name="matricula">
+                        <input type="password" placeholder="Contraseña" name="password">
+                        <button>Entrar</button><br>
+                        
+                    </form>
+                    
+
+                    <!--Register-->
+                    <form class="formulario__register" action="/register" method="POST">
+                        <h2>Regístrarse</h2>
+                        <input  type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input  type="text" placeholder="Nombre de usuario" name="username">
+                        <input  type="email" placeholder="Correo Electronico" name="gmail">
+                        <input  type="text" placeholder="Matricula" name="matricula">
+                        <input  type="password" placeholder="Contraseña" name="password">
+                        <input  type="password" placeholder="Confirmar contraseña" name="confipassword">
+                        <input  type="text" placeholder="Nombre completo" name="fullname">
+                        <button> Regístrarse</button>
+                    </form>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <script src="{{url_for('static', filename='js/login.js')}}"></script>
+        <script src="{{url_for('static', filename='js/alerta.js')}}"></script>
+</body>
+</html>

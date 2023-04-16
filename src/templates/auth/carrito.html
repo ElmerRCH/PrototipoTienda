@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/carrito.css')}}">
+    
+
+    <title>Document</title>
+</head>
+<body>
+        <header>
+            <div class="logo">
+                <a href="https://uadeo.mx/"><img src="{{url_for('static', filename='img/uadeo.png')}}"></a>
+                <h1>WebCoop</h1>
+            </div>
+            <nav>
+                <h1 class="nav-link">Carrito de, {{ current_user.matricula }}</h1>
+                <a href="{{ url_for('home') }}">Menu</a>
+                <a class="logout" href="{{ url_for('logout') }}">Cerrar sesion</a>
+            </nav>
+        </header>   
+        </div> 
+        <main class="container-responsive">
+            <div class = "table-container">
+                <table class="table-fill">
+                    <thead>
+                    <tr>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-left">Cantidad</th>
+                    <th class="text-left">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    <tr>
+                    <td class="text-left">san</td>
+                    <td class="text-left"> 10</td>
+                    <td class="text-left">$ 10</td>
+                    </tr>
+                    {% for i in data.plato %}
+                        <tr>
+                            <td class="text-left">{{i}}</td>
+                        
+                          
+                    {% endfor %}
+                    {% for i in data.Cantidad %}
+                        
+                            <td class="text-left">{{i}}</td>
+                        
+                      
+                    {% endfor %}
+                    {% for i in data.Total %}
+                        
+                            <td class="text-left">{{i}}</td>
+                        </tr> 
+                      
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <form action="/PagarCarrito" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button class="pagar">pagar carrito</button>
+                    <h4>{{data.Total[0]}}</h4>
+                </form>
+                
+        </main>
+</body>
+</html>

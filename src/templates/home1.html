@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <title>Menu</title>
+</head>
+<body>
+    <div class="area">
+         <header>
+            <div class="logo">
+                <a href="https://uadeo.mx/"><img src="{{url_for('static', filename='img/uadeo.png')}}"></a>
+                <h1>WebCoop</h1>
+                   {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <br/>
+                        {% for mesagge in messages %}
+                        <div class="alert alert-primary alert-dismissible" style="color:white"role="alert">
+                            <strong >{{ messages}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                        </div>
+                        {% endfor%}
+                        {%endif%}
+                    {% endwith %}
+            </div>
+            <nav>
+                <h1 class="nav-link">Bienvenido {{ current_user.matricula }}</h1>
+                <form action="/CallCarrito" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button><img src="{{url_for('static', filename='img/carrito.png')}}"></button>
+                </form>
+                <form action="/CallPedidos" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button>mis pedidios</button>
+                </form>
+                s</a>
+                <a class="logout" href="{{ url_for('logout') }}">Cerrar sesion</a>
+                
+            </nav>
+        </header>
+    
+        <div class="container-responsive">
+            <article class="platillos">
+                <h2>SanDwich</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/sandwish.png')}}">
+                </div>
+                <form class="form-radios">
+                   
+                    <input name="cantidad"type="number" min = "1" max = "5" value = "1">
+                    <button class="form-input" name="sandwish">Agregar al carrito</button>
+                </form>
+            </article>
+            <article class="platillos">
+                <h2>sincronizada</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/sincro.png')}}">
+                </div>
+                <form class="form-radios" action="/Carrito02" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input name="cantidad"type="number">
+                    <button class="form-input" name="sincronizada">Agregar al carrito</button>
+                </form>
+            </article>
+            <article class="platillos">
+                <h2>nachos</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/sandwish.png')}}">
+                </div>
+                <form class="form-radios" action="/Carrito03" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input name="cantidad"type="number" min = "1" max = "5" value = "1">
+                    <button class="form-input" name="nachos">Agregar al carrito</button>
+                </form>
+            </article>
+            <article class="platillos">
+                <h2>Mollete</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/mollete.png')}}">
+                </div>
+                <form class="form-radios">
+                    
+                    <button class="form-input">Agregar al carrito</button>
+                </form>
+            </article>
+            <article class="platillos">
+                <h2>Chilaquiles</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/chilaquiles.png')}}">
+                </div>
+                <form class="form-radios">
+                    
+                    <button class="form-input">Agregar al carrito</button>
+                </form>
+            </article>
+            <article class="platillos">
+                <h2>Torta</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/torta.png')}}">
+                </div>
+                <form class="form-radios">
+                    
+                    <button class="form-input">Agregar al carrito</button>
+                </form>
+            </article>
+            <article class="platillos">
+                <h2>Burrito</h2>
+                <div class="container-img-sandwish">
+                    <img src="{{url_for('static', filename='img/burrito.png')}}">
+                </div>
+                <form class="form-radios">
+                    
+                    <button class="form-input">Agregar al carrito</button>
+                </form>
+            </article>
+        </div>
+
+    </div>      
+    
+</body>
+</html>
